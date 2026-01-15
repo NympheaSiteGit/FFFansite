@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Compagnie Libre Les Ailes D'Or FFXIV</title>
+    <link rel="stylesheet" href="Compagnie Ailes 2.css" />
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Inter:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="tsparticles"></div>
+    <script>
+      tsParticles.load("tsparticles", {
+        particles: {
+          number: { value: 50 },
+          color: { value: "#FFD700" },
+          shape: { type: "circle" },
+          opacity: { value: 0.35 },
+          size: { value: 2 },
+          move: { enable: true, speed: 0.4 },
+        },
+        background: { color: "#3a2a1a" },
+      });
+    </script>
+
+    <nav class="navbar">
+      <div class="inner">
+        <div class="brand">
+          <img src="image/logo.png" alt="Logo CL" class="logo" />
+          <span> Les Ailes D'Or ★</span>
+        </div>
+        <div class="nav-links">
+          <a href="#accueil">Accueil</a>
+          <a href="#presentation">Présentation</a>
+          <a href="#activites">Activités</a>
+          <a href="#galerie">Galerie</a>
+          <a href="#recrutement">Recrutement</a>
+        </div>
+        <button id="hamburger" class="hamburger">☰</button>
+      </div>
+      <div id="mobileMenu" class="mobile-menu">
+        <a href="#accueil">Accueil</a>
+        <a href="#presentation">Présentation</a>
+        <a href="#activites">Activités</a>
+        <a href="#galerie">Galerie</a>
+        <a href="#recrutement">Recrutement</a>
+      </div>
+    </nav>
+
+    <header id="accueil" class="hero">
+      <h1 class="title">LES AILES D'OR ★</h1>
+      <p class="tagline">Une communauté, un groupe d'amis sur FFXIV</p>
+      <a href="https://discord.gg/4ejebAeg" class="btn-gold">✨ Rejoindre l'aventure</a>
+    </header>
+
+    <section id="presentation" class="section">
+      <h2>Qui sommes-nous ?</h2>
+      <div class="content">
+        <p>
+          Nous sommes une compagnie libre active sur le serveur [Sagittarius].
+          Nous organisons des raids, des soirées détente et des événements carte
+          aux trésors. Notre objectif est de créer une almbiance conviviale et
+          d'aider les nouveaux joueurs.
+        </p>
+      </div>
+    </section>
+
+    <section id="activites" class="section section-dark">
+      <h2>Nos activités</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>⚔️ Raids & Donjons</h3>
+          <p>Affrontons les défis les plus épiques ensemble.</p>
+        </div>
+        <div class="card">
+          <h3>🏠 Crafting & Housing</h3>
+          <p>Construisez et personnalisez votre chambre de CL</p>
+        </div>
+        <div class="card">
+          <h3>🎭 Événements cartes au trésors</h3>
+          <p>
+            Survivez sur les dernières cartes Gargantua et obtenez de fabuleux
+            trésors
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="galerie" class="section">
+      <h2>Galerie</h2>
+      <div class="gallery-grid">
+        <img
+          src="images/screen1.jpg"
+          alt="Raid épique"
+          class="lightbox-trigger"
+        />
+        <img src="images/screen2.jpg" alt="Housing" class="lightbox-trigger" />
+        <img
+          src="images/screen3.jpg"
+          alt="Événement RP"
+          class="lightbox-trigger"
+        />
+        <img
+          src="images/screen4.jpg"
+          alt="Exploration"
+          class="lightbox-trigger"
+        />
+      </div>
+    </section>
+
+    <div id="lightbox" class="lightbox" aria-hidden="true">
+      <button id="lightboxClose" class="close">✕</button>
+      <img id="lightboxImg" src="" alt="Agrandissement" />
+    </div>
+
+    <section id="recrutment" class="section">
+      <h2>Recrutement</h2>
+      <div class="content">
+        <p>
+          Nous recherchons des joueurs motivés, peu importe leur niveau. Si vous
+          aimez et jouer en groupe et partager des moments fun, rejoingnez-nous
+          !
+        </p>
+      </div>
+      <form class="form" action="#" method="post">
+        <imput
+          type="text"
+          name="pseudo"
+          placeholder="Votre pseudo en jeu"
+          class="input"
+          required
+        />
+        <button type="submit" class="btn-submit">Envoyer ma candidature</button>
+      </form>
+      <p class="hint">https://discord.gg/4ejebAeg</p>
+    </section>
+
+    <footer class="footer">
+      © 2025 Les Ailes D'Or - Fan site non officiel<br />
+      <a href="https://discord.gg/4ejebAeg">Rejoingnez-nous sur Discord</a>
+    </footer>
+
+    <script>
+      const burger = document.getElementById("hamburger");
+      const mobileMenu = document.getElementById("mobileMenu");
+      burger.addEventListener("click", () => {
+        mobileMenu.classList.toggle("open");
+      });
+
+      const triggers = document.querySelectorAll(".lightbox-trigger");
+      const lightbox = document.getElementById("lightbox");
+      const lightboxImg = document.getElementById("lightboxImg");
+      const lightboxClose = document.getElementById("lightboxClose");
+
+      triggers.forEach((img) => {
+        img.addEventListener("click", () => {
+          lightboxImg.src = img.src;
+          lightbox.classList.add("open");
+          lightbox.setAttribute("aria-hidden", "true");
+          document.body.style.overflow = "hidden";
+        });
+      });
+
+      const closeLightbox = () => {
+        lightbox.classList.remove("open");
+        lightbox.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+        lightboxImg.src = "";
+      };
+
+      lightboxClose.addEventListener("click", closeLightbox);
+      lightbox.addEventListener("click", (e) => {
+        if (e.key === "lightbox") closeLightbox();
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeLightbox();
+      });
+    </script>
+  </body>
+</html>
